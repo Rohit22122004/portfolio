@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bharadwaj M - Portfolio</title>
+  <style>
+    :root {
+      --color-bg: #121212; /* dark charcoal black */
+      --color-primary: #3b82f6; /* electric blue accent */
+      --color-text: #d1d5db; /* light gray text */
+      --color-text-muted: #9ca3af; /* muted gray text */
+      --color-card-bg: #1e1e1e; /* dark card background */
+      --radius-card: 0.75rem;
+      --shadow-card: 0 4px 12px rgba(59, 130, 246, 0.25);
+      --shadow-card-hover: 0 8px 24px rgba(59, 130, 246, 0.5);
+      --font-headline: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --font-body: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --transition-speed: 0.35s;
+      --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --container-max-width: 1200px;
+      --focus-outline: 3px solid #60a5fa; /* lighter blue for accessibility */
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700&display=swap');
+
+    /* Reset and basics */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body { 
+      margin: 0;
+      background: var(--color-bg);
+      color: var(--color-text-muted);
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-feature-settings: "liga" 1;
+      -moz-font-feature-settings: "liga=1";
+      font-feature-settings: "liga";
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color var(--transition-speed) var(--transition-ease);
+      outline-offset: 3px;
+    }
+    a:hover,
+    a:focus {
+      color: #60a5fa;
+      outline-offset: 3px;
+    }
+    a:focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: 3px;
+    }
+
+    /* Container */
+    .container {
+      max-width: var(--container-max-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--color-bg);
+      border-bottom: 1px solid #27272a;
+      z-index: 10;
+      box-shadow: 0 1px 4px rgba(59, 130, 246, 0.15);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4.5rem;
+    }
+
+    .logo {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      user-select: none;
+      transition: color var(--transition-speed) var(--transition-ease);
+      cursor: default;
+    }
+    .logo:focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color var(--transition-speed) var(--transition-ease);
+      color: var(--color-text-muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 0.25rem 0;
+      transition: color var(--transition-speed) var(--transition-ease);
+      color: var(--color-text-muted);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 2px;
+      background: transparent;
+      transition: background-color var(--transition-speed) var(--transition-ease);
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus::after {
+      background: var(--color-primary);
+    }
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--color-primary);
+    }
+    .nav-links a:focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: 3px;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 1rem 5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 3.75rem;
+      color: white;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      transition: color var(--transition-speed) var(--transition-ease);
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      font-size: 1.25rem;
+      color: var(--color-text);
+      transition: color var(--transition-speed) var(--transition-ease);
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: white;
+      font-weight: 600;
+      font-size: 1.125rem;
+      padding: 0.75rem 2.5rem;
+      border-radius: var(--radius-card);
+      border: none;
+      cursor: pointer;
+      transition:
+        background-color var(--transition-speed) var(--transition-ease),
+        box-shadow var(--transition-speed) var(--transition-ease),
+        transform var(--transition-speed) var(--transition-ease);
+      box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6);
+      will-change: transform;
+      user-select: none;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #60a5fa;
+      box-shadow: 0 12px 25px rgba(59, 130, 246, 0.9);
+      transform: scale(1.05);
+      outline: none;
+    }
+    .btn-primary:focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: 3px;
+    }
+
+    /* Sections */
+    section {
+      padding-top: 4rem;
+      padding-bottom: 5rem;
+      transition: background-color var(--transition-speed) var(--transition-ease);
+    }
+
+    section h2 {
+      font-family: var(--font-headline);
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      transition: color var(--transition-speed) var(--transition-ease);
+    }
+
+    /* About Section */
+    .about {
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.125rem;
+      color: var(--color-text);
+      line-height: 1.8;
+      transition: color var(--transition-speed) var(--transition-ease);
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2.5rem;
+      max-width: var(--container-max-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Card */
+    .card {
+      background: var(--color-card-bg);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition:
+        box-shadow var(--transition-speed) var(--transition-ease),
+        transform var(--transition-speed) var(--transition-ease);
+      will-change: transform;
+      cursor: default;
+      color: var(--color-text);
+    }
+
+    .card:hover,
+    .card:focus-within {
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-6px);
+      outline: none;
+      color: white;
+    }
+    .card:focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: 3px;
+    }
+
+    .card h3 {
+      font-family: var(--font-headline);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--color-primary);
+      transition: color var(--transition-speed) var(--transition-ease);
+    }
+
+    .card p {
+      flex-grow: 1;
+      font-size: 1rem;
+      line-height: 1.5;
+      transition: color var(--transition-speed) var(--transition-ease);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+      padding: 2rem 1rem;
+      border-top: 1px solid #27272a;
+      transition: color var(--transition-speed) var(--transition-ease);
+      user-select: none;
+    }
+    .resume-image{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+  width: 50%;
+    }
+
+    /* Profile Image */
+    .profile-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;   
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      border: 3px solid var(--color-primary);
+      object-fit: cover;
+      user-select: none;
+      transition:
+        box-shadow var(--transition-speed) var(--transition-ease),
+        transform var(--transition-speed) var(--transition-ease);
+      will-change: transform;
+      cursor: default;
+      background-color: #f0ebeb;
+    }
+    .profile-image:hover,
+    .profile-image:focus {
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.7);
+      transform: scale(1.05);
+      outline: none;
+    }
+    .profile-image:focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: 3px;
+    }
+
+    /* Responsive for smaller screens */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+      .profile-image {
+        width: 72px;
+        height: 72px;
+        top: 15px;
+        left: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Primary navigation">
+      <div class="nav-links">
+        <a href="#about" tabindex="0">About</a>
+        <a href="#resume" tabindex="0">Resume</a>
+        <a href="#skills" tabindex="0">Skills</a>
+        <a href="#projects" tabindex="0">Projects</a>
+        <a href="#contact" tabindex="0">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="hero" role="banner">
+      <!-- Replace 'your-photo-url.jpg' below with your own photo URL or relative path -->
+       <div class="logo" tabindex="0">BHARADWAJ.M </div>
+      <h1>Transforming Ideas into Reality</h1>
+      <p>Passionate about web development and creating innovative solutions that enhance user experiences.</p>
+      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
+    </section>
+
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Me</h2>
+      <p class="about">I am a dedicated web developer with a strong focus on creating dynamic and responsive web applications. My goal is to leverage technology to solve real-world problems and deliver exceptional user experiences.</p>
+    </section>
+
+    <section id="resume" aria-labelledby="resume-heading">
+      <h2 id="resume-heading">Resume</h2>
+      <img src="img/r.jpg" class="resume-image" tabindex="0"/>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills & Expertise</h2>
+      <div class="cards-grid">
+        <article class="card" tabindex="0" aria-label="Web Development">
+          <h3>Web Development</h3>
+          <p>Proficient in HTML, CSS, JavaScript, and frameworks like React and Node.js, with a focus on building responsive and user-friendly websites.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
+      <div class="cards-grid">
+        <article class="card" tabindex="0" aria-label="Loan Eligibility Prediction">
+          <h3>Loan Eligibility Prediction</h3>
+          <p>A machine learning project that predicts loan eligibility based on user data and financial history.</p>
+        </article>
+        <article class="card" tabindex="0" aria-label="Scheduled Plant Watering System">
+          <h3>Scheduled Plant Watering System</h3>
+          <p>An automated system that waters plants based on a schedule, ensuring optimal growth and care.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p style="max-width: 700px; margin: 0 auto 2rem; color: var(--color-text-muted);">Feel free to reach out for collaborations or inquiries!</p>
+
+      <div class="cards-grid" style="max-width: 400px; margin: 0 auto;">
+        <article class="card" tabindex="0" aria-label="Phone contact">
+          <h3>Phone</h3>
+          <p><a href="tel:7396204790" style="color: var(--color-primary);">7396204790</a></p>
+        </article>
+        <article class="card" tabindex="0" aria-label="Email contact">
+          <h3>Email</h3>
+          <p><a href="mailto:balabalaji5521@gmail.com" style="color: var(--color-primary);">balabalaji5521@gmail.com</a></p>
+        </article>
+        <article class="card" tabindex="0" aria-label="LinkedIn profile">
+          <h3>LinkedIn</h3>
+          <p><a href="https://www.linkedin.com/in/bharadwaj-m-037b44296?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener" style="color: var(--color-primary);">linkedin.com/in/bharadwaj-m-037b44296</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2024 Bharadwaj M — Made with care.
+  </footer>
+</body>
+</html>
