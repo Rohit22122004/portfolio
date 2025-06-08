@@ -9,9 +9,12 @@ permissions:
   id-token: write
   pages: write
   contents: read
-  
+
 jobs:
   deploy:
+    environment:
+      name: qa
+      
     runs-on: ubuntu-latest
 
     steps:
